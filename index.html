@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ayesha!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f5, #f8f0ff);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Confetti Background */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ffb6c1;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Main Container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d65db1;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* Message */
+        .message {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 25px 0;
+        }
+
+        /* Photo Frame */
+        .photo-frame {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 15px;
+            border: 8px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #f8f0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-frame:hover::after {
+            content: 'Yeh pal hamesha yaadgar rahenge...';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(214, 93, 177, 0.8);
+            color: white;
+            padding: 15px;
+            font-size: 1rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Button */
+        .surprise-btn {
+            background: linear-gradient(45deg, #d65db1, #ff6b91);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(214, 93, 177, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(214, 93, 177, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            background: #d65db1;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* Music Player */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .message { font-size: 1rem; }
+            .container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti Background -->
+    <div id="confetti-container"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>🎉 Happy Birthday Ayesha! 🎂</h1>
+        
+        <div class="message">
+            Tumhari muskurahat meri duniya roshan karti hai. Janmdin mubarak ho 💖
+        </div>
+        
+        <div class="photo-frame">
+            [Photo of Ayesha]
+        </div>
+        
+        <button class="surprise-btn" id="surpriseBtn">Click here for a surprise 🎁</button>
+    </div>
+
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl">
+        ♫
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>For You Ayesha</h2>
+            <p>You're amazing. Never forget that. Shine on! 🌟</p>
+            <button class="close-btn" id="closeBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="birthdayMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ffb6c1', '#ffd7e0', '#d65db1', '#ff6b91', '#f9c5d1'];
+            const confettiContainer = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = Math.random() * 5 + 5 + 's';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        // Music control
+        const music = document.getElementById('birthdayMusic');
+        const musicControl = document.getElementById('musicControl');
+        let isPlaying = false;
+
+        // Auto-play music (with user interaction)
+        document.addEventListener('click', function() {
+            if (!isPlaying) {
+                music.play();
+                isPlaying = true;
+                musicControl.textContent = '❚❚';
+            }
+        }, { once: true });
+
+        musicControl.addEventListener('click', function() {
+            if (isPlaying) {
+                music.pause();
+                musicControl.textContent = '♫';
+            } else {
+                music.play();
+                musicControl.textContent = '❚❚';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Modal
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const modal = document.getElementById('modal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        surpriseBtn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Initialize
+        window.onload = function() {
+            createConfetti();
+        };
+    </script>
+</body>
+</html>
